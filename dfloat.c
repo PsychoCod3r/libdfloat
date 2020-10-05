@@ -10,6 +10,7 @@
 
 // Note: This file is a work in progress. Don't expect it to work.
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -17,7 +18,7 @@
 
 // TODO: TEST
 #define dfloatN_cpy( small, big )\
-void dfloat ## big ## _cpy( dfloat ## big ## _t *dst, dfloat ## big ## _t #src ){\
+void dfloat ## big ## _cpy( dfloat ## big ## _t *dst, dfloat ## big ## _t *src ){\
 	dst->mantissa = src->mantissa;\
 	dst->exponent = src->exponent;\
 }
@@ -28,20 +29,30 @@ dfloatN_cpy( 32, 64 )
 dfloatN_cpy( 64, 128 )
 
 // TODO: TEST
-#define dfloatN_cast( small, big )\
-dfloat ## big ## _cast( void *src ){\
-	dfloat ## big ## _t *dst;\
-	dst = (dfloat ## big ## _t *) malloc( sizeof( dfloat ## big ## _t ) );\
-	dst->mantissa = (int ## small ## _t) src->mantissa;\
-	dst->exponent = (int ## small ## _t) src->exponent;\
+#define dfloatM_castN( smallM, bigM, smallN, bigN )\
+dfloat ## bigN ## _t *dfloat ## bigM ## _cast ## bigN ( dfloat ## bigM ##_t *src ){\
+	dfloat ## bigN ## _t *dst;\
+	dst = (dfloat ## bigN ## _t *) malloc( sizeof( dfloat ## bigN ## _t ) );\
+	dst->mantissa = (int ## smallN ## _t) src->mantissa;\
+	dst->exponent = (int ## smallN ## _t) src->exponent;\
 	return dst;\
 }
 
-dfloatN_cast( 8, 16 )
-dfloatN_cast( 16, 32 )
-dfloatN_cast( 32, 64 )
-dfloatN_cast( 64, 128 )
-	
+dfloatM_castN( 8, 16, 16, 32 )
+dfloatM_castN( 8, 16, 32, 64 )
+dfloatM_castN( 8, 16, 64, 128 )
+
+dfloatM_castN( 16, 32, 8, 16 )
+dfloatM_castN( 16, 32, 32, 64 )
+dfloatM_castN( 16, 32, 64, 128 )
+
+dfloatM_castN( 32, 64, 8, 16 )
+dfloatM_castN( 32, 64, 16, 32 )
+dfloatM_castN( 32, 64, 64, 128 )
+
+dfloatM_castN( 64, 128, 8, 16 )
+dfloatM_castN( 64, 128, 16, 32 )
+dfloatM_castN( 64, 128, 32, 64 )
 
 // TESTED AND WORKING
 #define dfloatN_add( small, big )\
@@ -78,7 +89,7 @@ void dfloat ## big ## _add( dfloat ## big ## _t *dst, dfloat ## big ## _t *src )
 	/* Otherwise (if there's overflow and some digits need to be cut   */\
 	/* off) the exponent should be equal to the exponent of the number */\
 	/* with the larger magnitude, minus abs(log_diff-log_max).         */\
-	log_max = ceil( log10( 1 << (small-3) ) );\
+	log_max = ceil( log10( ((int ## small ## _t) 1) << (small-3) ) );\
 	log_diff = larger_magnitude - smaller_exponent;\
 	target_exponent = (log_diff <= log_max)?smaller_exponent:larger_mag_exponent-abs(log_diff-log_max)+1;\
 \
@@ -113,7 +124,7 @@ void dfloat ## big ## _sub( dfloat ## big ## _t *dst, dfloat ## big ## _t *src )
 	dfloat ## big ## _cpy( tmp, src );\
 	tmp->mantissa *= -1;\
 	dfloat ## big ## _add( dst, tmp );\
-	free( tmp );
+	free( tmp );\
 }
 
 dfloatN_sub( 8, 16 )
@@ -141,7 +152,7 @@ void dfloat ## big ## _div( dfloat ## big ## _t *dst, dfloat ## big ## _t *src, 
 	long log_max;\
 	int ## small ## _t dst_magnitude;\
 	int ## small ## _t shift_factor;\
-	log_max = ceil( log10( 1 << (small-3) ) );\
+	log_max = ceil( log10( ((int ## small ## _t) 1) << (small-3) ) );\
 	dst_magnitude = ceil( log10( dst->mantissa * pow( 10, dst->exponent ) ) );\
 	shift_factor = pow( 10, log_max - dst_magnitude );\
 	dst->mantissa *= shift_factor;\
@@ -206,7 +217,7 @@ dfloat ## big ## _t *dfloat ## big ## _atof( char *src ){\
 dfloatN_atof( 8, 16 )
 dfloatN_atof( 16, 32 )
 dfloatN_atof( 32, 64 )
-dfloatN_afof( 64, 128 )
+dfloatN_atof( 64, 128 )
 
 // TODO: TEST
 #define dfloatN_ftoa( small, big )\
