@@ -140,8 +140,19 @@ dfloatN_sub( 64, 128 )
 // Multiplies the two operands and stores the result in the first operand
 #define dfloatN_mul( small, big )\
 void dfloat ## big ## _mul( dfloat ## big ## _t *dst, dfloat ## big ## _t *src ){\
+	int i;\
+	int ## small ## _t log_max;\
+	log_max = ceil( log10( ((int ## small ## _t) 1) << (small-3) ) );\
 	dst->mantissa *= src->mantissa;\
 	dst->exponent += src->exponent;\
+\
+	/* Count number of trailing zeros and adjust */\
+	/* mantissa and exponent accordingly:        */\
+	for( i = 0; i < log_max; i++ ){\
+		if( dst->mantissa % 10 ) break;\
+		dst->mantissa /= 10;\
+		dst->exponent++;\
+	}\
 }
 
 dfloatN_mul( 8, 16 )
@@ -153,6 +164,7 @@ dfloatN_mul( 64, 128 )
 // Divides the first operand by the second operand
 #define dfloatN_div( small, big )\
 void dfloat ## big ## _div( dfloat ## big ## _t *dst, dfloat ## big ## _t *src, int precision ){\
+	int i;\
 	/* First section shifts the destination mantissa */\
 	/* so it doesn't become zero when divided.       */\
 	long log_max;\
@@ -166,6 +178,14 @@ void dfloat ## big ## _div( dfloat ## big ## _t *dst, dfloat ## big ## _t *src, 
 	dst->mantissa /= src->mantissa;\
 	dst->exponent -= (src->exponent+precision);\
 	dst->mantissa /= (shift_factor/pow( 10, precision ));\
+\
+	/* Count number of trailing zeros and adjust */\
+	/* mantissa and exponent accordingly:        */\
+	for( i = 0; i < log_max; i++ ){\
+		if( dst->mantissa % 10 ) break;\
+		dst->mantissa /= 10;\
+		dst->exponent++;\
+	}\
 }
 
 dfloatN_div( 8, 16 )
