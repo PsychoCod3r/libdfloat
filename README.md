@@ -13,3 +13,17 @@ to/from files, as well as performing common arithmetic operations. These
 arithmetic operations are performed in roughly the same way arithmetic
 is done on floating point numbers in the IEEE-754 standard, except that
 everything is in decimal format.
+
+To compile:
+Place dfloat.c and dfloat.h in the same directory as your project
+Create linkable object file: gcc -c dfloat.c
+#include "dfloat.h" in any C files that use libdfloat
+Make linkable object files from your own project files
+Run the following command: gcc -o project_name *.o
+
+Be sure to credit me and include the Michael Warren FSL with any project
+that uses libdfloat. See the license for details.
+
+I will be adding a Makefile in the future to automate this whole process,
+and hopefully I can find a way to make libdfloat into a shared object
+file on all major platforms.
