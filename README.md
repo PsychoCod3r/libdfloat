@@ -13,17 +13,3 @@ to/from files, as well as performing common arithmetic operations. These
 arithmetic operations are performed in roughly the same way arithmetic
 is done on floating point numbers in the IEEE-754 standard, except that
 everything is in decimal format.
-
-What you see here is a very rough draft of the libdfloat library. The
-addition and atof implementations have been tested and debugged; the
-others still need to be. I'm a very sloppy programmer most of the time,
-so they're probably riddled with bugs and compiler errors. I just thought
-I'd post what I have for now so people can see the progress I'm making
-on this project. Currently there is no documentation for libdfloat; I will
-be creating documentation once I have the library tested and working.
-
-UPDATE: I have now fixed any compiler errors in dfloat.c so that now it at
-least compiles correctly. Still need to debug the functions though.
-
-UPDATE: The dfloatN_add(), dfloatN_atof(), and dfloatN_ftoa() functions
-are now tested and working.
