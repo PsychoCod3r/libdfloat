@@ -24,3 +24,6 @@ be creating documentation once I have the library tested and working.
 
 UPDATE: I have now fixed any compiler errors in dfloat.c so that now it at
 least compiles correctly. Still need to debug the functions though.
+
+UPDATE: The dfloatN_add(), dfloatN_atof(), and dfloatN_ftoa() functions
+are now tested and working.
