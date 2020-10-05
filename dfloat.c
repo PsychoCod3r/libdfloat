@@ -17,6 +17,7 @@
 #include "dfloat.h"
 
 // TODO: TEST
+// Copies the second operand to the first operand
 #define dfloatN_cpy( small, big )\
 void dfloat ## big ## _cpy( dfloat ## big ## _t *dst, dfloat ## big ## _t *src ){\
 	dst->mantissa = src->mantissa;\
@@ -29,6 +30,7 @@ dfloatN_cpy( 32, 64 )
 dfloatN_cpy( 64, 128 )
 
 // TODO: TEST
+// Casts a dfloat of width M to a dfloat of width N
 #define dfloatM_castN( smallM, bigM, smallN, bigN )\
 dfloat ## bigN ## _t *dfloat ## bigM ## _cast ## bigN ( dfloat ## bigM ##_t *src ){\
 	dfloat ## bigN ## _t *dst;\
@@ -55,6 +57,7 @@ dfloatM_castN( 64, 128, 16, 32 )
 dfloatM_castN( 64, 128, 32, 64 )
 
 // TESTED AND WORKING
+// Adds the two operands and stores the result in the first operand
 #define dfloatN_add( small, big )\
 void dfloat ## big ## _add( dfloat ## big ## _t *dst, dfloat ## big ## _t *src ){\
 	int i;\
@@ -117,6 +120,7 @@ dfloatN_add( 32, 64 )
 dfloatN_add( 64, 128 )
 
 // TODO: TEST
+// Subtracts the second operand from the first operand
 #define dfloatN_sub( small, big )\
 void dfloat ## big ## _sub( dfloat ## big ## _t *dst, dfloat ## big ## _t *src ){\
 	dfloat ## big ## _t *tmp;\
@@ -133,6 +137,7 @@ dfloatN_sub( 32, 64 )
 dfloatN_sub( 64, 128 )
 
 // TODO: TEST
+// Multiplies the two operands and stores the result in the first operand
 #define dfloatN_mul( small, big )\
 void dfloat ## big ## _mul( dfloat ## big ## _t *dst, dfloat ## big ## _t *src ){\
 	dst->mantissa *= src->mantissa;\
@@ -145,6 +150,7 @@ dfloatN_mul( 32, 64 )
 dfloatN_mul( 64, 128 )
 
 // TODO: TEST
+// Divides the first operand by the second operand
 #define dfloatN_div( small, big )\
 void dfloat ## big ## _div( dfloat ## big ## _t *dst, dfloat ## big ## _t *src, int precision ){\
 	/* First section shifts the destination mantissa */\
@@ -168,6 +174,7 @@ dfloatN_div( 32, 64 )
 dfloatN_div( 64, 128 )
 
 // TESTED AND WORKING
+// Reads a dfloat value from a string
 #define dfloatN_atof( small, big )\
 dfloat ## big ## _t *dfloat ## big ## _atof( char *src ){\
 	int i, len;\
@@ -220,6 +227,7 @@ dfloatN_atof( 32, 64 )
 dfloatN_atof( 64, 128 )
 
 // TODO: TEST
+// Writes a dfloat value to a string and returns that string
 #define dfloatN_ftoa( small, big )\
 char *dfloat ## big ## _ftoa( dfloat ## big ## _t *src ){\
 	int ## small ## _t size1, size2;\
