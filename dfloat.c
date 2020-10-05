@@ -1,5 +1,5 @@
 /****************************************************
- * libdfloat, version 0.1 Alpha                     *
+ * libdfloat, version 0.1.1 Alpha                   *
  * Description: Implements floating point numbers   *
  *              with exact decimal representations  *
  * Current file: All libdfloat function definitions *
@@ -184,6 +184,26 @@ dfloatN_div( 8, 16 )
 dfloatN_div( 16, 32 )
 dfloatN_div( 32, 64 )
 dfloatN_div( 64, 128 )
+
+// Returns 1 if Arg1 > Arg2, -1 if Arg1 < Arg2, 0 if Arg1 == Arg2
+#define dfloatN_cmp( small, big )\
+int dfloat ## big ## _cmp( dfloat ## big ## _t *df1, dfloat ## big ## _t *df2 ){\
+	dfloat ## big ## _t *cpy;\
+	int result;\
+	cpy = (dfloat ## big ## _t *) malloc( sizeof( dfloat ## big ## _t ) );\
+	dfloat ## big ## _cpy( cpy, df1 );\
+	dfloat ## big ## _sub( cpy, df2 );\
+	if( cpy->mantissa > 0 )\
+		return 1;\
+	if( cpy->mantissa < 0 )\
+		return -1;\
+	return 0;\
+}
+
+dfloatN_cmp( 8, 16 )
+dfloatN_cmp( 16, 32 )
+dfloatN_cmp( 32, 64 )
+dfloatN_cmp( 64, 128 )
 
 // Reads a dfloat value from a string
 #define dfloatN_atof( small, big )\

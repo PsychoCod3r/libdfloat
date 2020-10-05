@@ -1,5 +1,5 @@
 /****************************************************
- * libdfloat, version 0.1 Alpha                     *
+ * libdfloat, version 0.1.1 Alpha                   *
  * Description: Implements floating point numbers   *
  *              with exact decimal representations  *
  * Current file: Header file for entire project     *
@@ -38,6 +38,7 @@ void dfloat16_add( dfloat16_t *, dfloat16_t * );
 void dfloat16_sub( dfloat16_t *, dfloat16_t * );
 void dfloat16_mul( dfloat16_t *, dfloat16_t * );
 void dfloat16_div( dfloat16_t *, dfloat16_t *, int );
+int dfloat16_cmp( dfloat16_t *, dfloat16_t * );
 void dfloat16_cpy( dfloat16_t *, dfloat16_t * );
 dfloat32_t *dfloat16_cast32( dfloat16_t * );
 dfloat64_t *dfloat16_cast64( dfloat16_t * );
@@ -48,6 +49,7 @@ void dfloat32_add( dfloat32_t *, dfloat32_t * );
 void dfloat32_sub( dfloat32_t *, dfloat32_t * );
 void dfloat32_mul( dfloat32_t *, dfloat32_t * );
 void dfloat32_div( dfloat32_t *, dfloat32_t *, int );
+int dfloat32_cmp( dfloat32_t *, dfloat32_t * );
 void dfloat32_cpy( dfloat32_t *, dfloat32_t * );
 dfloat16_t *dfloat32_cast16( dfloat32_t * );
 dfloat64_t *dfloat32_cast64( dfloat32_t * );
@@ -58,6 +60,7 @@ void dfloat64_add( dfloat64_t *, dfloat64_t * );
 void dfloat64_sub( dfloat64_t *, dfloat64_t * );
 void dfloat64_mul( dfloat64_t *, dfloat64_t * );
 void dfloat64_div( dfloat64_t *, dfloat64_t *, int );
+int dfloat64_cmp( dfloat64_t *, dfloat64_t * );
 void dfloat64_cpy( dfloat64_t *, dfloat64_t * );
 dfloat16_t *dfloat64_cast16( dfloat64_t * );
 dfloat32_t *dfloat64_cast32( dfloat64_t * );
@@ -68,6 +71,7 @@ void dfloat128_add( dfloat128_t *, dfloat128_t * );
 void dfloat128_sub( dfloat128_t *, dfloat128_t * );
 void dfloat128_mul( dfloat128_t *, dfloat128_t * );
 void dfloat128_div( dfloat128_t *, dfloat128_t *, int );
+int dfloat128_cmp( dfloat128_t *, dfloat128_t * );
 void dfloat128_cpy( dfloat128_t *, dfloat128_t * );
 dfloat16_t *dfloat128_cast16( dfloat128_t * );
 dfloat32_t *dfloat128_cast32( dfloat128_t * );
