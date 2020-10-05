@@ -1,0 +1,16 @@
+Version 0.1:
+Included working implementations of:
+  - dfloatN_add()
+  - dfloatN_sub()
+  - dfloatN_mul()
+  - dfloatN_div()
+  - dfloatN_cpy()
+  - dfloatM_castN()
+  - dfloatN_atof()
+  - dfloatN_ftoa()
+
+Version 0.1.1:
+Added dfloatN_cmp() functions.
+
+Version 0.1.2 (upcoming):
+Will add test driver program for alpha-testing the library.
