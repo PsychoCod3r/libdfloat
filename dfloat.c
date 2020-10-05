@@ -76,9 +76,9 @@ void dfloat ## big ## _add( dfloat ## big ## _t *dst, dfloat ## big ## _t *src )
 	dst_magnitude = ceil( log10( abs( dst->mantissa ) * pow( 10, dst->exponent ) ) );\
 	/* magnitude is the number of digits before the decimal point */\
 	/* or the number of zeros after the decimal point if negative */\
-	if( src_mantissa == 1 )\
+	if( abs( src_mantissa ) == 1 )\
 		src_magnitude++;\
-	if( dst_mantissa == 1 )\
+	if( abs( dst_mantissa ) == 1 )\
 		dst_magnitude++;\
 	/* Increment accounts for exact powers of 10 */\
 	smaller_exponent = (src->exponent < dst->exponent)?src->exponent:dst->exponent;\
@@ -246,18 +246,26 @@ dfloatN_atof( 16, 32 )
 dfloatN_atof( 32, 64 )
 dfloatN_atof( 64, 128 )
 
-// TODO: TEST
+// TESTED AND WORKING
 // Writes a dfloat value to a string and returns that string
 #define dfloatN_ftoa( small, big )\
 char *dfloat ## big ## _ftoa( dfloat ## big ## _t *src ){\
 	int ## small ## _t size1, size2;\
 	int ## small ## _t whole_part, frac_part;\
-	int ## small ## _t shift_factor;\
+	double shift_factor;\
 	int ## small ## _t whole_magnitude, frac_magnitude;\
 	int i;\
+	int zeros, zeros_end;\
 	char *buf;\
 	size1 = ceil( log10( abs( src->mantissa ) ) );\
-	if( src->exponent == 0 ){\
+	if( abs( src->mantissa ) == 1 )\
+	/* Accounts for exact powers of 10 */\
+		size1++;\
+	if( src->mantissa == 0 ){\
+		buf = (char *) malloc( 2 );\
+		sprintf( buf, "0\0" );\
+	}\
+	else if( src->exponent == 0 ){\
 		/* This code simply prints the mantissa. */\
 		size2 = size1 + 2;\
 		buf = (char *) malloc( size2 );\
@@ -287,18 +295,31 @@ char *dfloat ## big ## _ftoa( dfloat ## big ## _t *src ){\
 		whole_part = abs( src->mantissa ) * shift_factor;\
 		frac_part = abs( src->mantissa ) - whole_part / shift_factor;\
 \
-		whole_magnitude = ceil( log10( whole_part ) );\
+		whole_magnitude = whole_part?(ceil( log10( whole_part ) )):1;\
 		frac_magnitude = ceil( log10( frac_part ) );\
 \
 		/* This code accounts for exact powers of 10. */\
-		if( whole_magnitude = log10( whole_part ) )\
+		if( whole_magnitude == log10( whole_part ) )\
 			whole_magnitude++;\
-		if( frac_magnitude = log10( frac_part ) )\
+		if( frac_magnitude == log10( frac_part ) )\
 			frac_magnitude++;\
 \
-		size2 = whole_magnitude + frac_magnitude + 3;\
+		/* This code accounts for fractional parts less than 0.1 */\
+		zeros = -(src->exponent) - frac_magnitude;\
+\
+		if( src->mantissa < 0 )\
+		/* Add one character for the minus sign */\
+			whole_magnitude++;\
+		size2 = whole_magnitude + frac_magnitude + 2;\
 		buf = (char *) malloc( size2 );\
-		sprintf( buf, "%s%d.%d\0", (src->mantissa < 0)?"-":"", whole_part, frac_part );\
+		sprintf( buf, "%s%d.", (src->mantissa < 0)?"-":"", whole_part );\
+		i = whole_magnitude + 1;\
+		if( zeros > 0 ){\
+			zeros_end = zeros + whole_magnitude + 1;\
+			for( i = whole_magnitude+ 1; i < zeros_end; i++ )\
+				buf[i] = '0';\
+		}\
+		sprintf( buf + i, "%d\0", frac_part );\
 	}\
 	return buf;\
 }
