@@ -15,10 +15,10 @@ is done on floating point numbers in the IEEE-754 standard, except that
 everything is in decimal format.
 
 To compile:
-Place dfloat.c and dfloat.h in the same directory as your project
+Place dfloat.c and dfloat.h in the same directory as your project.
 Create linkable object file: gcc -c dfloat.c
-#include "dfloat.h" in any C files that use libdfloat
-Make linkable object files from your own project files
+#include "dfloat.h" in any C files that use libdfloat.
+Make linkable object files from your own project files.
 Run the following command: gcc -o project_name *.o
 
 Be sure to credit me and include the Michael Warren FSL with any project
