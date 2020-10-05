@@ -21,3 +21,6 @@ so they're probably riddled with bugs and compiler errors. I just thought
 I'd post what I have for now so people can see the progress I'm making
 on this project. Currently there is no documentation for libdfloat; I will
 be creating documentation once I have the library tested and working.
+
+UPDATE: I have now fixed any compiler errors in dfloat.c so that now it at
+least compiles correctly. Still need to debug the functions though.
