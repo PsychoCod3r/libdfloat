@@ -273,7 +273,7 @@ char *dfloat ## big ## _ftoa( dfloat ## big ## _t *src ){\
 		/* This code accounts for exact powers of 10. */\
 		if( whole_magnitude = log10( whole_part ) )\
 			whole_magnitude++;\
-		if( frac_magnitude = log10( fract_part ) )\
+		if( frac_magnitude = log10( frac_part ) )\
 			frac_magnitude++;\
 \
 		size2 = whole_magnitude + frac_magnitude + 3;\
@@ -282,3 +282,8 @@ char *dfloat ## big ## _ftoa( dfloat ## big ## _t *src ){\
 	}\
 	return buf;\
 }
+
+dfloatN_ftoa( 8, 16 )
+dfloatN_ftoa( 16, 32 )
+dfloatN_ftoa( 32, 64 )
+dfloatN_ftoa( 64, 128 )
