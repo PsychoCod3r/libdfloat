@@ -12,5 +12,6 @@ Included working implementations of:
 Version 0.1.1:
 Added dfloatN_cmp() functions.
 
-Version 0.1.2 (upcoming):
-Will add test driver program for alpha-testing the library.
+Version 0.1.2:
+Modified dfloatN_cmp() to free an unfreed malloc().
+Modified dfloatN_ftoa() to eliminate a possible log10( 0 ).
