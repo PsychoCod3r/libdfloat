@@ -1,5 +1,5 @@
 /****************************************************
- * libdfloat, version 0.1.1 Alpha                   *
+ * libdfloat, version 0.1.2 Alpha                   *
  * Description: Implements floating point numbers   *
  *              with exact decimal representations  *
  * Current file: Header file for entire project     *

@@ -1,5 +1,5 @@
 /****************************************************
- * libdfloat, version 0.1.1 Alpha                   *
+ * libdfloat, version 0.1.2 Alpha                   *
  * Description: Implements floating point numbers   *
  *              with exact decimal representations  *
  * Current file: All libdfloat function definitions *
@@ -193,11 +193,14 @@ int dfloat ## big ## _cmp( dfloat ## big ## _t *df1, dfloat ## big ## _t *df2 ){
 	cpy = (dfloat ## big ## _t *) malloc( sizeof( dfloat ## big ## _t ) );\
 	dfloat ## big ## _cpy( cpy, df1 );\
 	dfloat ## big ## _sub( cpy, df2 );\
-	if( cpy->mantissa > 0 )\
-		return 1;\
-	if( cpy->mantissa < 0 )\
-		return -1;\
-	return 0;\
+	if( cpy->mantissa == 0 )\
+		result = 0;\
+	else if( cpy->mantissa > 0 )\
+		result = 1;\
+	else if( cpy->mantissa < 0 )\
+		result = -1;\
+	free( cpy );\
+	return result;\
 }
 
 dfloatN_cmp( 8, 16 )
@@ -267,7 +270,7 @@ char *dfloat ## big ## _ftoa( dfloat ## big ## _t *src ){\
 	int i;\
 	int zeros, zeros_end;\
 	char *buf;\
-	size1 = ceil( log10( abs( src->mantissa ) ) );\
+	size1 = (src->mantissa)?ceil( log10( abs( src->mantissa ) ) ):0;\
 	if( abs( src->mantissa ) == 1 )\
 	/* Accounts for exact powers of 10 */\
 		size1++;\
