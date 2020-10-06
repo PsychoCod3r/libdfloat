@@ -27,3 +27,12 @@ that uses libdfloat. See the license for details.
 I will be adding a Makefile in the future to automate this whole process,
 and hopefully I can find a way to make libdfloat into a shared object
 file on all major platforms.
+
+
+Included files:
+README: This file
+LICENSE: The Michael Warren FSL under which this software is released
+dfloat.h: Header file containing typedefs and function prototypes
+dfloat.c: C module containing all function definitions
+doc.txt: Documentation for all types and functions defined in libdfloat
+change.log: Log of changes made with each release of libdfloat
