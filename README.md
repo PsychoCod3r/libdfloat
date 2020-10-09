@@ -64,7 +64,7 @@ Installation and usage instructions:
 
    `gcc myproject -L dir -ldfloat`
 
-   (where dir is the directory containing libdfloat.a)
+   (where `dir` is the directory containing libdfloat.a)
 
 ---------------------------------------------------------------------------
 
