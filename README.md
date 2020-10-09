@@ -1,3 +1,5 @@
+**Introduction:**
+
 libdfloat is a floating point library for C that represents decimal
 numbers precisely with no rounding errors. It provides four types for
 representing decimal floating point numbers, as well as functions for
