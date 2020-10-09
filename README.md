@@ -8,7 +8,7 @@ the IEEE-754 standard, except the numbers have a decimal base.
 
 ---------------------------------------------------------------------------
 
-Why did I write this library?
+**Why did I write this library?**
 
 Reading and writing decimal numbers from/to a CSV database or other text
 file can result in problems when numbers are represented in a binary
@@ -23,7 +23,7 @@ text file in the same format they were in when read.
 
 ---------------------------------------------------------------------------
 
-Who is this library for?
+**Who is this library for?**
 
 libdfloat is intended for programmers who work with text-based flat-file
 databases in their programs, but it can theoretically be used by anyone
@@ -33,7 +33,7 @@ decimal base.
 ---------------------------------------------------------------------------
 
 
-This repository currently includes the following files:
+**Files included in this repository:**
 
 - README: This file
 
@@ -50,7 +50,13 @@ This repository currently includes the following files:
 
 ---------------------------------------------------------------------------
 
-Installation and usage instructions:
+**Dependencies:**
+
+None
+
+---------------------------------------------------------------------------
+
+**Installation and usage instructions:**
 
 1. Download libdfloat using the clone feature.
 
