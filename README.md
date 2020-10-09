@@ -15,11 +15,11 @@ file can result in problems when numbers are represented in a binary
 format by the C program. Rounding errors can occur, resulting in values
 getting truncated during conversion between the decimal and binary
 bases. Also, the textual representation of floating point numbers via
-a function like fprintf() can often have trailing zeros and other problems
-that make a number difficult to write back to the file in the same format
-it was read from. The goal of libdfloat is to preserve the representation
-of decimal numbers so that they are written back to the text file in
-the same format they were in when read.
+a function like `fprintf()` can often have trailing zeros and other
+problems that make a number difficult to write back to the file in the
+same format it was read from. The goal of libdfloat is to preserve the
+representation of decimal numbers so that they are written back to the
+text file in the same format they were in when read.
 
 ---------------------------------------------------------------------------
 
@@ -35,19 +35,20 @@ decimal base.
 
 This repository currently includes the following files:
 
-README: This file
+- README: This file
 
-LICENSE: The Michael Warren FSL under which this software is released
+- LICENSE - the Michael Warren Free Software License under which this and
+  all my other software is released
 
-dfloat.h: Header file containing typedefs and function prototypes
+- dfloat.h: Header file containing typedefs and function prototypes
 
-dfloat.c: C module containing all function definitions
+- dfloat.c: C module containing all function definitions
 
-doc.txt: Documentation for all types and functions defined in libdfloat
+- doc.txt: Documentation for all types and functions defined in libdfloat
 
-change.log: Log of changes made with each release of libdfloat
+- change.log: Log of changes made with each release of libdfloat
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------------
 
 Installation and usage instructions:
 
@@ -55,17 +56,17 @@ Installation and usage instructions:
 
 2. Run the following commands:
 
-   gcc -c dfloat.c
+   `gcc -c dfloat.c`
 
-   ar -rsv libdfloat.a dfloat.o
+   `ar -rsv libdfloat.a dfloat.o`
 
 3. To link the libdfloat library to a project, run the following command:
 
-   gcc myproject -L dir -ldfloat
+   `gcc myproject -L dir -ldfloat`
 
    (where dir is the directory containing libdfloat.a)
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------------
 
 If you have any feedback or want to report any issues, please don't
 hesitate to notify me. You are helping me make these libraries
