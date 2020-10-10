@@ -34,7 +34,6 @@ decimal base.
 
 ---------------------------------------------------------------------------
 
-
 **Files included in this repository:**
 
 - README: This file
@@ -49,6 +48,8 @@ decimal base.
 - doc.txt: Documentation for all types and functions defined in libdfloat
 
 - change.log: Log of changes made with each release of libdfloat
+
+- syntax.vim: Additional syntax highlighting for Vim users
 
 ---------------------------------------------------------------------------
 
