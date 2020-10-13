@@ -96,6 +96,6 @@
    issues that may arise with regards to this license or any software
    released under its terms.
 
-*Note: Software derived from the FSL and released under a different
-license or a closed-source license is bound by Sections 4, 5, and 6 of
-the FSL but not by Sections 2 and 3.*
+*Note: Software derived from FSL-licensed software and released under
+a different license or a closed-source license is bound by Sections 4,
+5, and 6 of the FSL but not by Sections 2 and 3.*
