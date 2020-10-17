@@ -30,19 +30,19 @@ libdfloat defines the following groups of functions:
 
 `void dfloatN_add( dfloatN_t *dst, dfloatN_t *src )`
 
-Add *N*-bit `src` and `dst` operands together and store the result in `dst`.
+Adds *N*-bit `src` and `dst` operands together and stores the result in `dst`.
 
 `void dfloatN_sub( dfloatN_t *dst, dfloatN_t *src )`
 
-Subtract *N*-bit `src` from *N*-bit `dst` and store the result in `dst`.
+Subtracts *N*-bit `src` from *N*-bit `dst` and stores the result in `dst`.
 
 `void dfloatN_mul( dfloatN_t *dst, dfloatN_t *src )`
 
-Multiply *N*-bit `src` and `dst` operands together and store the result in `dst`.
+Multiplies *N*-bit `src` and `dst` operands together and stores the result in `dst`.
 
 `void dfloatN_div( dfloatN_t *dst, dfloatN_t *src, int precision )`
 
-Divide *N*-bit `dst` by `src` and store the result in `src`, with up to `precision`
+Divides *N*-bit `dst` by `src` and stores the result in `src`, with up to `precision`
 digits past the decimal point.
 
 `int dfloatN_cmp( dfloatN_t *df1, dfloatN_t *df2 )`
