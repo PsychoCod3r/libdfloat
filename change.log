@@ -18,7 +18,7 @@ Modified dfloatN_ftoa() to eliminate a possible log10( 0 ).
 Added documentation.
 
 Version 0.1.2.1:
-Updated README.md and other files
+Updated Markdown files
 
 Version 0.2:
 Added module dfloat_free.c
