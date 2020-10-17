@@ -36,16 +36,24 @@ decimal base.
 
 **Files included in this repository:**
 
-- README: This file
+- README.md - this file
 
-- LICENSE - the Michael Warren Free Software License under which this and
-  all my other software is released
+- LICENSE.md - the Michael Warren Free Software License under which this
+  and all my other software is released
+
+- CoC.md - the Apolitical Code of Conduct which is used for this project
+
+- TODO.md - list of modifications I want to make to this software in
+  the future
+
+- DOC.md - Documentation of all types and functions defined in libdfloat
 
 - dfloat.h: Header file containing typedefs and function prototypes
 
-- dfloat.c: C module containing all function definitions
+- dfloat.c: C module containing standard dfloat functions
 
-- doc.txt: Documentation for all types and functions defined in libdfloat
+- dfloat_free.c: dfloat functions that free their source operands before
+  returning, written to facilitate more complex expressions
 
 - change.log: Log of changes made with each release of libdfloat
 
@@ -65,9 +73,9 @@ None
 
 2. Run the following commands:
 
-   `gcc -c dfloat.c`
+   `gcc -c dfloat.c dfloat_free.c`
 
-   `ar -rsv libdfloat.a dfloat.o`
+   `ar -rsv libdfloat.a dfloat.o dfloat_free.o`
 
 3. To link the libdfloat library to a project, run the following command:
 

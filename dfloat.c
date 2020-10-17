@@ -1,11 +1,11 @@
 /****************************************************
- * libdfloat, version 0.1.2 Alpha                   *
+ * libdfloat, version 0.2 Alpha                     *
  * Description: Implements floating point numbers   *
  *              with exact decimal representations  *
- * Current file: All libdfloat function definitions *
  * Author: Michael Warren, a.k.a. Psycho Cod3r      *
  * Date: October 2020                               *
- * License: Micheal Warren FSL                      *
+ * License: Micheal Warren FSL v1.1                 *
+ * Current module: Standard dfloat functions        *
  ****************************************************/
 
 #include <stdio.h>

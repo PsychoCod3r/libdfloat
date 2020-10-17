@@ -1,11 +1,11 @@
 /****************************************************
- * libdfloat, version 0.1.2 Alpha                   *
+ * libdfloat, version 0.2 Alpha                     *
  * Description: Implements floating point numbers   *
  *              with exact decimal representations  *
- * Current file: Header file for entire project     *
  * Author: Michael Warren, a.k.a. Psycho Cod3r      *
  * Date: October 2020                               *
- * License: Micheal Warren FSL                      *
+ * License: Micheal Warren FSL v1.1                 *
+ * Current module: Header file for entire project   *
  ****************************************************/
 
 #ifndef _DFLOAT_H_
@@ -34,6 +34,7 @@ typedef struct {
 } dfloat128_t;
 
 __BEGIN_DECLS
+// Functions defined in dfloat.c:
 void dfloat16_add( dfloat16_t *, dfloat16_t * );
 void dfloat16_sub( dfloat16_t *, dfloat16_t * );
 void dfloat16_mul( dfloat16_t *, dfloat16_t * );
@@ -78,6 +79,44 @@ dfloat32_t *dfloat128_cast32( dfloat128_t * );
 dfloat64_t *dfloat128_cast64( dfloat128_t * );
 dfloat128_t *dfloat128_atof( char * );
 char *dfloat128_ftoa( dfloat128_t * );
+
+// Functions defined in dfloat_free.c:
+dfloat16_t *dfloat16_addf( dfloat16_t *, dfloat16_t * );
+dfloat16_t *dfloat16_subf( dfloat16_t *, dfloat16_t * );
+dfloat16_t *dfloat16_mulf( dfloat16_t *, dfloat16_t * );
+dfloat16_t *dfloat16_divf( dfloat16_t *, dfloat16_t *, int );
+int dfloat16_cmpf( dfloat16_t *, dfloat16_t * );
+dfloat32_t *dfloat16_cast32f( dfloat16_t * );
+dfloat64_t *dfloat16_cast64f( dfloat16_t * );
+dfloat128_t *dfloat16_cast128f( dfloat16_t * );
+char *dfloat16_ftoaf( dfloat16_t * );
+dfloat32_t *dfloat32_addf( dfloat32_t *, dfloat32_t * );
+dfloat32_t *dfloat32_subf( dfloat32_t *, dfloat32_t * );
+dfloat32_t *dfloat32_mulf( dfloat32_t *, dfloat32_t * );
+dfloat32_t *dfloat32_divf( dfloat32_t *, dfloat32_t *, int );
+int dfloat32_cmpf( dfloat32_t *, dfloat32_t * );
+dfloat16_t *dfloat32_cast16f( dfloat32_t * );
+dfloat64_t *dfloat32_cast64f( dfloat32_t * );
+dfloat128_t *dfloat32_cast128f( dfloat32_t * );
+char *dfloat32_ftoaf( dfloat32_t * );
+dfloat64_t *dfloat64_addf( dfloat64_t *, dfloat64_t * );
+dfloat64_t *dfloat64_subf( dfloat64_t *, dfloat64_t * );
+dfloat64_t *dfloat64_mulf( dfloat64_t *, dfloat64_t * );
+dfloat64_t *dfloat64_divf( dfloat64_t *, dfloat64_t *, int );
+int dfloat64_cmpf( dfloat64_t *, dfloat64_t * );
+dfloat16_t *dfloat64_cast16f( dfloat64_t * );
+dfloat32_t *dfloat64_cast32f( dfloat64_t * );
+dfloat128_t *dfloat64_cast128f( dfloat64_t * );
+char *dfloat64_ftoaf( dfloat64_t * );
+dfloat128_t *dfloat128_addf( dfloat128_t *, dfloat128_t * );
+dfloat128_t *dfloat128_subf( dfloat128_t *, dfloat128_t * );
+dfloat128_t *dfloat128_mulf( dfloat128_t *, dfloat128_t * );
+dfloat128_t *dfloat128_divf( dfloat128_t *, dfloat128_t *, int );
+int dfloat128_cmpf( dfloat128_t *, dfloat128_t * );
+dfloat16_t *dfloat128_cast16f( dfloat128_t * );
+dfloat32_t *dfloat128_cast32f( dfloat128_t * );
+dfloat64_t *dfloat128_cast64f( dfloat128_t * );
+char *dfloat128_ftoaf( dfloat128_t * );
 __END_DECLS
 
 #endif
