@@ -4,7 +4,7 @@
  *              with exact decimal representations  *
  * Author: Michael Warren, a.k.a. Psycho Cod3r      *
  * Date: October 2020                               *
- * License: Micheal Warren FSL v1.1                 *
+ * License: Micheal Warren FSL Version 1.1          *
  * Current module: Function versions that free the  *
  *                 source operand, making complex   *
  *                 expressions easier               *
@@ -12,6 +12,15 @@
 
 #include <stdlib.h>
 #include "dfloat.h"
+
+// Note: Because these functions free their operands,
+// you can't use the same variable multiple times in
+// an expression that uses them. They should only be
+// used for expressions that involve directly placing
+// one function inside another function's operand list,
+// which would make explicitly freeing the arguments
+// impossible, thus necessitating a collection of
+// functions that do that for you.
 
 #define dfloatM_castNf( M, N )\
 dfloat ## N ## _t *dfloat ## M ## _cast ## N ## f( dfloat ## M ## _t *src ){\

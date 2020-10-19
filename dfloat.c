@@ -4,7 +4,7 @@
  *              with exact decimal representations  *
  * Author: Michael Warren, a.k.a. Psycho Cod3r      *
  * Date: October 2020                               *
- * License: Micheal Warren FSL v1.1                 *
+ * License: Micheal Warren FSL Version 1.1          *
  * Current module: Standard dfloat functions        *
  ****************************************************/
 
