@@ -28,22 +28,32 @@ as desired, as there are macros that generate the corresponding functions.
 
 libdfloat defines the following groups of functions:
 
+---
+
 `void dfloatN_add( dfloatN_t *dst, dfloatN_t *src )`
 
-Adds *N*-bit `src` and `dst` operands together and stores the result in `dst`.
+Add *N*-bit `src` and `dst` operands together and store the result in `dst`.
+
+---
 
 `void dfloatN_sub( dfloatN_t *dst, dfloatN_t *src )`
 
-Subtracts *N*-bit `src` from *N*-bit `dst` and stores the result in `dst`.
+Subtract *N*-bit `src` from *N*-bit `dst` and store the result in `dst`.
+
+---
 
 `void dfloatN_mul( dfloatN_t *dst, dfloatN_t *src )`
 
-Multiplies *N*-bit `src` and `dst` operands together and stores the result in `dst`.
+Multiply *N*-bit `src` and `dst` operands together and store the result in `dst`.
+
+---
 
 `void dfloatN_div( dfloatN_t *dst, dfloatN_t *src, int precision )`
 
-Divides *N*-bit `dst` by `src` and stores the result in `src`, with up to `precision`
+Divide *N*-bit `dst` by `src` and store the result in `src`, with up to `precision`
 digits past the decimal point.
+
+---
 
 `int dfloatN_cmp( dfloatN_t *df1, dfloatN_t *df2 )`
 
@@ -57,6 +67,8 @@ Returns:
 
 `0` if `df1 == df2`
 
+---
+
 `dfloatN_t *dfloatN_atof( char *str )`
 
 Reads an *N*-bit `dfloat` from input string `str`.
@@ -65,13 +77,19 @@ Input string must be in the following format (BNF):
 
 `[-]<digit><digit>*[.<digit><digits>*]`
 
+---
+
 `char *dfloatN_ftoa( dfloatN_t *df )`
 
 Generates a string representation of *N*-bit `dfloat` value `df`.
 
+---
+
 `void dfloatN_cpy( dfloatN_t *dst, dfloatN_t *src )`
 
 Copies the mantissa and exponent from `src` to `dst`.
+
+---
 
 `dfloatN_t *dfloatM_castN( dfloatM *src )`
 
@@ -79,6 +97,8 @@ Takes a `dfloat` of size `M` and typecasts it, returning a `dfloat` of size `N`.
 
 Cast functions where `M == N` have not been implemented as the author
 saw no need for such functions.
+
+---
 
 *Note: Overflow errors may occur if the result of an operation is too
 large to fit into the designated space. These will not be reported by
@@ -94,33 +114,49 @@ that free their source operands, allowing the user to build more complex
 expressions using these functions without having to worry about lost
 objects accumulating. These "free versions" are as follows:
 
+---
+
 `dfloatN_t *dfloatN_addf( dfloatN_t *arg1, dfloatN_t *arg2 )`
 
 Adds `arg1` and `arg2` and returns the result
+
+---
 
 `dfloatN_t *dfloatN_subf( dfloatN_t *arg1, dfloatN_t *arg2 )`
 
 Subtracts `arg2` from `arg1` and returns the result
 
+---
+
 `dfloatN_t *dfloatN_mulf( dfloatN_t *arg1, dfloatN_t *arg2 )`
 
 Multiplies `arg1` by `arg2` and returns the result
+
+---
 
 `dfloatN_t *dfloatN_divf( dfloatN_t *arg1, dfloatN_t *arg2, int precision )`
 
 Divides `arg1` by `arg2` with the given precision and returns the result
 
+---
+
 `int dfloatN_cmpf( dfloatN_t *arg1, dfloatN_t *arg2 )`
 
 Like `dfloatN_cmp()`, but frees the source operands
+
+---
 
 `char *dfloatN_ftoaf( dfloat_t *src )`
 
 Like `dfloatN_ftoa()`, but frees the source operand
 
+---
+
 `dfloatN_t *dfloatM_castNf( dfloatM_t *src )`
 
 Like `dfloatM_castN()`, but frees the source operand
+
+---
 
 *Note: Because these functions free their operands, they should not be
 used on variables. They should only be used on immediate operands,
